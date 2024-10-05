@@ -1,0 +1,50 @@
+1. Implementar la clase Jugador
+Crear la clase Jugador con los atributos:
+energiaExotraje: 100.0 unidades.
+eficienciaExotraje: 0.0%.
+inventario: lista o mapa para almacenar recursos extraídos.
+Implementar los métodos:
+extraerRecursos(int tipo): reduce la energía del exotraje usando la fórmula proporcionada, y añade los recursos extraídos al inventario.
+recargarEnergia(float sodio): incrementa la energía del exotraje según la cantidad de Sodio.
+Getters y setters para atributos privados.
+2. Implementar la clase Nave
+Crear la clase Nave con los atributos:
+combustible: 100.0 unidades.
+eficienciaCombustible: 0.0%.
+Métodos a implementar:
+viajar(int direccion, int salto): calcula el combustible consumido y permite saltar a otro planeta.
+recargarCombustible(float hidrogeno): recarga el combustible según la cantidad de Hidrógeno.
+Getters y setters para atributos privados.
+3. Generador procedural de planetas
+En la clase MapaGalactico, implementar el método:
+generadorPlaneta():
+Genera un nuevo planeta con sus características (radio, temperatura, recursos, etc.) usando rand().
+Selecciona el tipo de planeta basado en las probabilidades (Helados 30%, Oceánicos 30%, Radiactivos 20%, Volcánicos 19%, Centro Galáctico 1%).
+Almacena el planeta en una lista.
+4. Movimiento en el mapa galáctico
+Implementar el sistema de movimiento en el MapaGalactico:
+viajar(int direccion, int salto): el jugador puede moverse entre planetas usando la nave. Asegúrate de que el planeta al que se va a viajar esté generado, y si no, generarlo.
+5. Interacción con asentamientos
+En la clase Planeta, implementar el método visitarAsentamientos() (a través de una interfaz tieneAsentamientos):
+Permitir el intercambio de recursos como Uranio o Platino para mejorar el exotraje o la nave (incrementar eficiencia).
+Añadir mejoras de eficiencia en Jugador y Nave tras el intercambio.
+6. Gestión del inventario
+En la clase Jugador, implementar un sistema básico de inventario para almacenar recursos extraídos:
+Método agregarRecurso(String tipo, int cantidad) para añadir recursos.
+Método verInventario() para mostrar los recursos actuales.
+Implementar el vaciado del inventario si el jugador se queda sin energía en un planeta.
+7. Condiciones de pérdida y victoria
+Pérdida: si la energía del exotraje llega a 0 en un planeta, el jugador pierde el inventario y vuelve al planeta inicial.
+Victoria: viajar al Centro Galáctico (requiere más del 50% de eficiencia en la nave para llegar).
+8. Interfaz de consola
+Implementar una interfaz sencilla en la consola que permita:
+Ver la posición actual en el mapa galáctico.
+Ver las características del planeta actual.
+Elegir acciones como extraer recursos, interactuar con asentamientos o viajar a otro planeta.
+9. Archivo Makefile
+Asegúrate de incluir un archivo Makefile que compile todas las clases necesarias con el comando javac.
+Opcional (bonificación):
+Narración y arte ASCII: Añade descripciones temáticas de los planetas, interacciones con los alienígenas, o usa arte ASCII en la consola.
+Mejora la experiencia de usuario: Usa colores en la consola o una historia envolvente para mejorar la experiencia.
+Orden sugerido:
+Jugador/Nave → 2. MapaGalactico y Planetas → 3. Movimientos → 4. Inventario → 5. Interacción y eficiencia → 6. Condiciones de juego → 7. Interfaz de consola → 8. Bonificación.
