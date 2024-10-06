@@ -6,7 +6,6 @@ public class Planeta {
     private int cristalesHidrogeno;
     private int floresDeSodio;
     private int consumoEnergia;
-    //protected  Jugador jugador;
     private Jugador jugador;
 
     public Planeta() {
@@ -49,11 +48,13 @@ public class Planeta {
 
     //Metodos aparte
     // La idea es en el main, dsp de crear el planeta preguntarle al jugador si quiere visitarlo, si dice que si, se llama a este metodo
+    //El retorno de esta funcion da paso a que se inicialice el ciclo de extraccion de recursos
     public boolean visitar(Jugador jugador) {
         this.jugador = jugador;
-        System.out.println("Bienvenido a este planeta");
-        System.out.println("La cantidad de cristales de hidrógeno es: " + cristalesHidrogeno);
-        System.out.println("La cantidad de flores de sodio es: " + floresDeSodio);
+        System.out.println("Aterrizando en el planeta...");
+        System.out.println("Cantidad de Cristales de Hidrogeno escaneados: " + cristalesHidrogeno);
+        System.out.println("Cantidad de Flores de Sodio escaneadas: " + floresDeSodio);
+        
         return true;
     }
 
@@ -61,9 +62,17 @@ public class Planeta {
     public int extraerRecursos(int tipo){
         System.out.println("\nCuánto desea extraer?");
         int unidadesRecurso = scanner.nextInt();
-        int unidadesConsumidas =(int) (0.5*unidadesRecurso *(consumoEnergia/100)*(1-jugador.getEficienciaProtec()));
-        jugador.consumirEnergia(unidadesConsumidas);
-        return unidadesRecurso;
+        
+        int unidadesConsumidas = (int) Math.round(0.5 * unidadesRecurso * (consumoEnergia / 10) * (1 - jugador.getEficienciaProtec()));
+        if (unidadesConsumidas > jugador.getEnergiaProtec()) {
+            System.out.println("No tienes suficiente energía para extraer esa cantidad de recursos");
+            return 0;
+        }
+        else {
+            System.out.println("Se consumieron " + unidadesConsumidas + " unidades de energía");
+            jugador.consumirEnergia(unidadesConsumidas);
+            return unidadesRecurso;
+        }
     }
         
 }

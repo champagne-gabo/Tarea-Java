@@ -9,9 +9,9 @@ public class Radioactivo extends Planeta {
 
         setCristales(0.2); 
         setFlores(0.2);    
-
-        uranio = (int) Math.round(0.25 * 4*Math.PI * Math.pow(getRadio(), 2));
         radiacion = RandomUtils.rand(10, 50);
+        uranio = (int) Math.round(0.25 * 4*Math.PI * Math.pow(getRadio(), 2)) * radiacion;
+        
         setConsumoEnergia(0.3, radiacion);
     }
 
@@ -22,7 +22,7 @@ public class Radioactivo extends Planeta {
         return radiacion;
     }
 
-    @Override
+    @Override //falta sobreescribir esto
     public boolean visitar(Jugador jugador) {
         super.visitar(jugador); 
         System.out.println("La cantidad de uranio es: " + uranio);

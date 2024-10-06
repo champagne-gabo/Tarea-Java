@@ -52,10 +52,14 @@ public class Jugador {
         this.unidadesEnergiaProteccion =(float) 0.65 * sodio * (1 + eficienciaEnergiaProteccion);
     }
 
-    public void consumirEnergia(int energia){
-        this.unidadesEnergiaProteccion -= energia;
+    public void consumirEnergia(float energia) {
+        if (energia > 0) {
+            this.unidadesEnergiaProteccion -= energia;
+            if (this.unidadesEnergiaProteccion < 0) {
+                this.unidadesEnergiaProteccion = 0; // No puede ser negativa
+            }
+        }
     }
-
     
 
     
