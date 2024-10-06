@@ -21,5 +21,12 @@ public class Volcanico extends Planeta {
     public int getPlatino() {
         return platino;
     }
+
+    @Override
+    public boolean visitar(Jugador jugador) {
+        super.visitar(jugador); 
+        System.out.println("La cantidad de platino es: " + platino);
+        return true;
+    }
 }
 

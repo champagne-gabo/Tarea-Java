@@ -1,0 +1,1 @@
+mapa con llave nombre de aldeano, valor su dialogo

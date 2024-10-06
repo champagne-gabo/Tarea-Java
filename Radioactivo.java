@@ -21,4 +21,11 @@ public class Radioactivo extends Planeta {
     public int getRadiacion() {
         return radiacion;
     }
+
+    @Override
+    public boolean visitar(Jugador jugador) {
+        super.visitar(jugador); 
+        System.out.println("La cantidad de uranio es: " + uranio);
+        return true;
+    }
 }

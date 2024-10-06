@@ -25,30 +25,40 @@ public class Jugador {
        
     }
 
-    public void recargarEnergiaProteccion(float sodio){
-        this.unidadesEnergiaProteccion =(float) 0.65 * sodio * (1 + eficienciaEnergiaProteccion);
-    }
-
+    //getters
     public float getEnergiaProtec(){
         return unidadesEnergiaProteccion;
     }
-
-    public void setEficienciaProtec(float a){
-        this.eficienciaEnergiaProteccion = a;
-    }
-
     public float getEficienciaProtec(){
         return eficienciaEnergiaProteccion;
     }
-
-    public void setMaxEnergia(float maxEnergia) {
-        this.maxEnergia = maxEnergia;
-    }
-
     public float getMaxEnergia() {
         return maxEnergia;
     }
 
+    //setters
+    public void setEnergiaProteccion(int energia){
+        this.unidadesEnergiaProteccion = energia;
+    }
+    public void setEficienciaProtec(float a){
+        this.eficienciaEnergiaProteccion = a;
+    }
+    public void setMaxEnergia(float maxEnergia) {
+        this.maxEnergia = maxEnergia;
+    }
+
+    //Metodos aparte
+    public void recargarEnergiaProteccion(float sodio){
+        this.unidadesEnergiaProteccion =(float) 0.65 * sodio * (1 + eficienciaEnergiaProteccion);
+    }
+
+    public void consumirEnergia(int energia){
+        this.unidadesEnergiaProteccion -= energia;
+    }
+
+    
+
+    
     //Para el inventario
     //Tenia pensado que en la consola cuando se le pregunte al jugador que material quiere extraer, mostrar las alternativas con un numero, guardar su respuesta en una variable
     //int tipo que debe ser accesible en todo el codigo asi tengo guardado el tipo de material y esa funcion retorna la cantidad, por tanto estoy listo para añadir al inventario

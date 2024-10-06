@@ -1,0 +1,41 @@
+Diálogos para el Planeta Helado
+Pablo: "¡Wena, compadre! ¿Qué recursos vienes a buscar? Asegúrate de no dejarme sin materiales, o tendré que llamarte 'el ladrón helado'."
+
+Claudia: "Hola, ¿y tú quién eres? ¿Qué recursos traes para buscar? No vaya a ser que te lleves todo y nos dejes sin nada."
+
+Ricardo: "¡Qué onda! ¿Vienes a sacar materiales? Porque si es así, ¡no seas tonto y trae más abrigo! No vaya a ser que te quedes helado."
+
+Sofía: "¡Hola, amigo! ¿Qué materiales vienes a buscar? Solo ten cuidado, no me gustaría verte resbalando por ahí."
+
+Diego: "¿Qué pasa, chiquillo? ¿Qué recursos traes para buscar? No te emociones, este frío no es para todo el mundo, pero aquí estamos."
+
+Luz: "Wena, ¿qué tal? Espero que no seas de los que viene a llevarse todo. ¿Qué materiales vienes a buscar, eh?"
+
+Nico: "Hola, ¿qué tal? Antes de que te lleves algo, dime: ¿qué recursos vienes a buscar? Y cuidado con el hielo, no quiero verte caer."
+
+Patricia: "¡Hola, guapo! ¿Qué materiales vienes a buscar? Este planeta helado no es para debiluchos, así que espero que traigas algo interesante."
+
+Luis: "¡Ey! ¿Qué recursos traes en mente? Espero que no seas de esos que creen que el frío es una broma. ¡Aprovecha y saca lo que puedas!"
+
+Gabriela: "Hola, ¿qué tal? Antes de que te lleves algo, dime: ¿qué recursos vienes a buscar? No quiero sorpresas heladas, por si acaso."
+
+Diálogos para el Planeta Oceánico
+Pablo: "¡Hola, amigo! ¿Qué recursos vienes a buscar? No te olvides de traer algo bueno, ¡porque aquí el agua no es solo para nadar!"
+
+Claudia: "Wena, ¿y tú quién eres? ¿Qué materiales traes en mente? Asegúrate de que no nos dejes sin nada para el próximo almuerzo."
+
+Ricardo: "¡Qué pasa! ¿Vienes a sacar materiales? Ten cuidado, no quiero verte nadando entre los recursos, ¡eso no cuenta!"
+
+Sofía: "¡Hola! ¿Qué recursos vienes a buscar? Espero que no te creas un pez, ¡aquí no estamos para eso!"
+
+Diego: "¿Qué onda, amigo? ¿Qué materiales traes? No te emociones, ¡aquí no hay espacio para los que no saben navegar!"
+
+Luz: "Wena, ¿qué tal? Antes de que te lleves algo, dime: ¿qué recursos vienes a buscar? Y no te olvides de saludar a los peces."
+
+Nico: "Hola, ¿qué tal? Espero que no seas de los que vienen a llevarse todo sin preguntar. ¿Qué recursos vienes a buscar, eh?"
+
+Patricia: "¡Hola, guapo! ¿Qué materiales traes para buscar? Este océano no está para que te lleves lo que quieras, ¡pide permiso!"
+
+Luis: "¡Ey! ¿Qué recursos traes en mente? Aquí el agua no se acaba, pero no queremos que te lleves lo que no te pertenece."
+
+Gabriela: "Hola, ¿qué tal? Antes de que te lleves algo, dime: ¿qué recursos vienes a buscar? Espero que no seas un pez fuera del agua."
