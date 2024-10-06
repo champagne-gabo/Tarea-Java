@@ -5,9 +5,9 @@ public class Helado extends Planeta {
     private final int temperatura;
     private final ArrayList<String> dialogos;
     
-    public Helado() {
+    public Helado(/*Jugador jugador*/) {
         super();
-
+        //this.jugador = jugador;
         setRadio(1000, 1000000); 
 
         setCristales(0.65); 
@@ -35,3 +35,4 @@ public class Helado extends Planeta {
         System.out.println(mensaje); 
     }
 }
+

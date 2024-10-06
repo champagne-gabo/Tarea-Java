@@ -1,6 +1,7 @@
 JAVAC = javac
 
-MAIN_CLASS = Main
+
+MAIN_CLASS = NoJavaSky
 
 all: 
 	$(JAVAC) *.java

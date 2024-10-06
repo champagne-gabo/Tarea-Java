@@ -6,6 +6,7 @@ public class Planeta {
     private int cristalesHidrogeno;
     private int floresDeSodio;
     private int consumoEnergia;
+    //protected  Jugador jugador;
     private Jugador jugador;
 
     public Planeta() {
