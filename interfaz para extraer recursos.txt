@@ -1,9 +1,0 @@
-System.out.println("\n¡Bienvenido a la Estación de Extracción Espacial!");
-        System.out.println("¿Qué recursos deseas extraer? Elige un número:");
-        System.out.println("1 - Cristales de Hidrógeno");
-        System.out.println("2 - Flores de Sodio");
-        System.out.println("3 - Uranio");
-        System.out.println("4 - Platino");
-        
-        // Input del usuario
-        int opcion = scanner.nextInt();

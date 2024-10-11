@@ -1,0 +1,4 @@
+chequear si se restó bien
+Revisar que todo esté funcionando bien en cuanto a extraccion
+Arreglar los negativos
+chequear si los tipos de datos están bien

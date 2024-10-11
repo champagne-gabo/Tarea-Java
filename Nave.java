@@ -36,4 +36,28 @@ public class Nave {
         this.unidadesCombustible = (float) 0.6 * hidrogeno * (1+eficienciaPropulsor);
     }
 
+    //public boolean viajarPlaneta(MapaGalactico MP, int direccion, int tamanoSalto){
+
+
+    //}
+
+    public void consumirCombustible(int tamanoSalto) {
+        if (unidadesCombustible > 0) {
+            this.unidadesCombustible -= calcularGastoCombustible(tamanoSalto);
+            if (this.unidadesCombustible < 0) {
+                this.unidadesCombustible = 0; // No puede ser negativa
+            }
+        }
+    }
+    //Deshacer esta funcion e implementarlo en los viajes
+    protected int calcularGastoCombustible(int tamanoSalto) {
+        int unidadesConsumidas = (int) Math.round(0.75 * Math.pow(tamanoSalto, 2) * (1 + eficienciaPropulsor));
+        if (unidadesConsumidas > unidadesCombustible) {
+            System.out.println("No tienes suficiente combustible para realizar ese viaje.");
+            return 0;
+        }
+        System.out.println("Se consumió " + unidadesCombustible + " unidades de combustibl;e.");
+        return unidadesConsumidas;
+    }
+
 }

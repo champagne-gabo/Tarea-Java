@@ -4,20 +4,20 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class MapaGalactico {
-    private final List<Planeta> MG;  // Lista de planetas
+    private final List<Planeta> planetas;  // Lista de planetas
     private final Random random;     // Generador aleatorio para planetas
-    private int pos; 
+    private int posicion; 
     private final Scanner scanner = new Scanner(System.in);                
 
     public MapaGalactico() {
-        this.MG = new ArrayList<>();
+        this.planetas = new ArrayList<>();
         this.random = new Random();
-        this.pos = 0;  
-        MG.add(generadorPlaneta());
+        this.posicion = 0;  
+        planetas.add(generadorPlaneta());
         
     }
 
-    // Método para generar un nuevo planeta y añadirlo a la lista
+    
     public Planeta generadorPlaneta() {
         int tipoPlaneta = random.nextInt(100); 
         Planeta nuevoPlaneta;
@@ -35,13 +35,13 @@ public class MapaGalactico {
             nuevoPlaneta = new CentroGalactico(); // Solo puede haber un Centro Galáctico
         }
         
-        MG.add(nuevoPlaneta);  
+        
         return nuevoPlaneta;
     }
 
     // Devuelve la cantidad de planetas generados hasta ahora
     public int getCantidadPlanetas() {
-        return MG.size();
+        return planetas.size();
     }
 
     
@@ -49,32 +49,32 @@ public class MapaGalactico {
         
         
         System.out.println("Lista de planetas generados:");
-        for (int i = 0; i < MG.size(); i++) {
-            System.out.println(i + ": " + MG.get(i).getClass().getSimpleName());
+        for (int i = 0; i < planetas.size(); i++) {
+            System.out.println(i + ": " + planetas.get(i).getClass().getSimpleName());
         }
         
         System.out.println("Selecciona el índice del planeta que deseas visitar:");
         int indice = scanner.nextInt();
-        return MG.get(indice);
+        return planetas.get(indice);
     }
 
     
     public Planeta avanzarAPlaneta(int salto) {
         
-        int nuevaPos = pos + salto;
+        int nuevaPos = posicion + salto;
 
         
-        while (nuevaPos >= MG.size()) {
+        while (nuevaPos >= planetas.size()) {
             generadorPlaneta();
         }
 
         
-        pos = nuevaPos;
-        return MG.get(pos); 
+        posicion = nuevaPos;
+        return planetas.get(posicion); 
     }
 
     
     public int getPosicion() {
-        return pos;
+        return posicion;
     }
 }

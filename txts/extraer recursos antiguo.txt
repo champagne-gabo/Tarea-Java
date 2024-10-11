@@ -1,0 +1,30 @@
+public int extraerRecursos(int tipo){
+        System.out.println("\nCuánto desea extraer?");
+        int unidadesRecurso = scanner.nextInt();
+        
+        if (tipo == 1) { // Cristales de Hidrogeno
+            if (unidadesRecurso > cristalesHidrogeno) {
+                System.out.println("No hay suficientes Cristales de Hidrogeno para extraer esa cantidad");
+                return 0;
+            } else {
+                cristalesHidrogeno -= unidadesRecurso;
+            }
+        } else if (tipo == 2) { // Flores de Sodio
+            if (unidadesRecurso > floresDeSodio) {
+                System.out.println("No hay suficientes Flores de Sodio para extraer esa cantidad");
+                return 0;
+            } else {
+                floresDeSodio -= unidadesRecurso;
+            }
+        } else {
+            return 0;
+        }
+        int unidadesConsumidas = (int) Math.round(0.5 * unidadesRecurso * (consumoEnergia / 10) * (1 - jugador.getEficienciaProtec()));
+        if (unidadesConsumidas > jugador.getEnergiaProtec()) {
+            System.out.println("No tienes suficiente energía para extraer esa cantidad de recursos");
+            return 0;
+        }
+        System.out.println("Se consumieron " + unidadesConsumidas + " unidades de energía");
+        jugador.consumirEnergia(unidadesConsumidas);
+        return unidadesRecurso;
+    }
