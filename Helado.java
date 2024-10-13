@@ -22,6 +22,11 @@ public class Helado extends Planeta implements tieneAsentamientos {
         dialogos = new ArrayList<>();
         dialogos.add("Wena, soy el Walo, cómo eso que vienes a robarnos los materiales? Na mentira, qué necesita?\n");
         dialogos.add("Hola, soy Catalina, qué feo tu exotraje, qué materiales vienes a llevarte a ver si puedes mejorarle algo...\n");
+        dialogos.add("¡Buenas! Soy Joaquín, no te confundas, tengo algo que podría interesarte, pero ¿puedes pagar su precio?\n");
+        dialogos.add("¡HOLA! Soy Hugo, estoy ansioso de hacer tratos contigo\n");
+        dialogos.add("Buenas, soy Andrea, tengo cosas que podrías necesitar. ¿Interesado en comerciar?\n");
+        dialogos.add("Heyy, soy Diego! Si quieres sobrevivir en el espacio, debes ser astuto. ¿Tienes lo que se necesita para negociar?\n");
+        dialogos.add("Holaa, soy Elena, una fría comerciante. ¿Qué puedes ofrecerme a cambio de mis secretos?\n");
         
     }
 
@@ -61,8 +66,9 @@ public class Helado extends Planeta implements tieneAsentamientos {
                 break;
 
             case 2:
-                System.out.println("Hola tradeemos.");
+                
                 visitarAsentamientos(jugador);
+                break;
             case 3:
                 System.out.println("Saliendo del planeta...");
                 break;
@@ -70,68 +76,74 @@ public class Helado extends Planeta implements tieneAsentamientos {
         
         return true;
         }
-
-        @Override
-        public void visitarAsentamientos(Jugador jugador) {
+    @Override
+    public void visitarAsentamientos(Jugador jugador) {
         System.out.println("Aterrizando a las afueras del asentamiento...");
+        System.out.println("Camino a los locatarios...\n");
+        System.out.println("Ha aparecido un nativo\n");
+
         conversacion();
+
         System.out.println("1. Mejoras para el exotraje");
         System.out.println("2. Mejoras para la nave");
 
-        int tradeo = scanner.nextInt();
+        int eleccion = scanner.nextInt();
 
-        switch (tradeo) {
+        switch (eleccion) {
             case 1:
-            mejorarExotraje(jugador);
-            break;
+                System.out.println("Ok veamos alguna mejora para ese traje...\n");
+                mostrarTradeos(jugador, eleccion);
+                break;
             case 2:
-            System.out.println("Has intercambiado materiales por mejoras para tu nave.");
-            break;
+                System.out.println("Ok, veamos alguna mejora para esa chatarra");
+                mostrarTradeos(jugador, eleccion);
+                break;
         }
-        }
+    }
 
-        private void mejorarExotraje(Jugador jugador) {
-        System.out.println("Ok veamos alguna mejora para ese viejo traje...");
-        System.out.println("Como sabrás, en un planeta como este no se es posible encontrar platino o uranio...");
+    private void mostrarTradeos(Jugador jugador, int eleccion) {
+        int[] cantidadesNecesarias = new int[4];
+        int[] aumentos = new int[4];
 
-        System.out.println("1. Captaste mi curiosidad");
-        System.out.println("2. Prefiero tradear con otro tipo de materiales");
-
-        int decision = scanner.nextInt();
-
-        if (decision == 1) {
-            realizarIntercambio(jugador, 3, 4);  // Uranio y Platino
-        } else {
-            realizarIntercambio(jugador, 1, 2);  // Cristales de Hidrogeno y Flores de Sodio
-        }
+        for (int i = 0; i < 4; i++) {
+            cantidadesNecesarias[i] = RandomUtils.rand(100, 250); // Rango para cantidades
+            aumentos[i] = RandomUtils.rand(2, 18); // Rango para aumentos
         }
 
-        private void realizarIntercambio(Jugador jugador, int recurso1, int recurso2) {
-        int necesario1 = RandomUtils.rand(100, 250);  // Rango para el primer recurso
-        int necesario2 = RandomUtils.rand(300, 450);  // Rango para el segundo recurso
-        int aumento1 = RandomUtils.rand(2, 18);
-        int aumento2 = RandomUtils.rand(2, 18);
-
-        System.out.println("1. +" + aumento1 + "% de eficiencia : " + necesario1 + " de Uranio");
-        System.out.println("2. +" + aumento2 + "% de eficiencia : " + necesario2 + " de Platino");
+        System.out.println("1. +" + aumentos[0] + "% de eficiencia : " + cantidadesNecesarias[0] + " de " + jugador.getNombreRecurso(3));
+        System.out.println("2. +" + aumentos[1] + "% de eficiencia : " + cantidadesNecesarias[1] + " de " + jugador.getNombreRecurso(3));
+        System.out.println("3. +" + aumentos[2] + "% de eficiencia : " + cantidadesNecesarias[2] + " de " + jugador.getNombreRecurso(4));
+        System.out.println("4. +" + aumentos[3] + "% de eficiencia : " + cantidadesNecesarias[3] + " de " + jugador.getNombreRecurso(4));
 
         int trade = scanner.nextInt();
-
-        if (trade == 1) {
-            realizarTrade(jugador, recurso1, necesario1, aumento1);
+        int recurso = (trade == 1 || trade == 2) ? 3 : 4; // Determinar el recurso a usar
+        int cantidadNecesaria = cantidadesNecesarias[trade - 1]; // Obtener la cantidad necesaria
+        int aumento = aumentos[trade - 1];
+        if (eleccion == 1) {
+            mejorarExotraje(jugador, recurso, cantidadNecesaria, aumento);
         } else {
-            realizarTrade(jugador, recurso2, necesario2, aumento2);
+            mejorarNave(jugador, recurso, cantidadNecesaria, aumento);
         }
-        }
+    }
 
-        private void realizarTrade(Jugador jugador, int recurso, int cantidadNecesaria, int aumento) {
+    private void mejorarExotraje(Jugador jugador, int recurso, int cantidadNecesaria, int aumento) {
         if (jugador.getRecurso(recurso) >= cantidadNecesaria) {
             jugador.agregarInventario(recurso, -cantidadNecesaria);
             jugador.setEficienciaProtec(jugador.getEficienciaProtec() + aumento);
         } else {
             System.out.println("No tienes materiales suficientes para el tradeo");
         }
+    }
+
+    private void mejorarNave(Jugador jugador, int recurso, int cantidadNecesaria, int aumento) {
+        Nave nave = jugador.getNave();
+        if (jugador.getRecurso(recurso) >= cantidadNecesaria) {
+            jugador.agregarInventario(recurso, -cantidadNecesaria);
+            nave.setEficienciaPropulsor(nave.getEficienciaPropulsor() + aumento);
+        } else {
+            System.out.println("No tienes materiales suficientes para el tradeo");
         }
     }
+}
 
 

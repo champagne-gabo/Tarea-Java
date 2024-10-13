@@ -4,7 +4,9 @@ public class NoJavaSky {
     public static void main(String[] args) {
         // Crear un jugador
         Jugador jugador = new Jugador();
-        
+        Nave nave = jugador.getNave();
+        nave.getCombustible();
+        System.out.println( nave.getCombustible());
         // Crear el Mapa Galáctico
         MapaGalactico mapa = new MapaGalactico();
         try (Scanner scanner = new Scanner(System.in)) {

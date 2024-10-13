@@ -5,6 +5,7 @@ public class Jugador {
     private float unidadesEnergiaProteccion;
     private float eficienciaEnergiaProteccion;
     private float maxEnergia;
+    private final Nave nave;
 
     public Jugador() {
         inventario = new HashMap<>();
@@ -22,7 +23,7 @@ public class Jugador {
         this.maxEnergia = (float) 100.0;
         this.unidadesEnergiaProteccion =  maxEnergia;
         this.eficienciaEnergiaProteccion = 0;
-       
+        this.nave = new Nave();
     }
 
     //getters
@@ -37,6 +38,12 @@ public class Jugador {
     }
     public int getRecurso(int tipo){
         return inventario.get(tipo);
+    }
+    public String getNombreRecurso(int tipo){
+        return diccionario.get(tipo);
+    }
+    public Nave getNave() { 
+        return nave;
     }
 
     //setters

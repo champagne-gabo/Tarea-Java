@@ -6,3 +6,7 @@ cambiar todos los inputs quitando el salto de linea para que responda en la mism
 el capeo en los recursos hace que (creo que siempre) se ponga el valor max de int
 chequear si los metodos de Planeta deben ser public abstract
 ver rangos de los tradeos
+arreglar dialogo tradeo
+solo se puede tradear con uranio y platino, yo estoy tradeando con flores y cristales, arreglar
+si el jugador no recarga o algo muere (lo que dijo el benja)
+pasar los metodos de helado de tradeo a tieneAsentamientos lo que sea en general para ambos

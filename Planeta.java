@@ -135,6 +135,7 @@ public abstract class Planeta {
         System.out.println("Preparando despegue...");
         System.out.println("Saliendo a la orbita del planeta...");
         //LOGICA PARA SALIR
+        //Quizas settear como NULL jugador
         return true;
     }
     
