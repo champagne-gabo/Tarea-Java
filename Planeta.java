@@ -35,7 +35,7 @@ public abstract class Planeta {
 
     //setters
     public void setRadio(int a, int b) {
-        this.radio = RandomUtils.rand(a, b);
+        this.radio = GameUtils.rand(a, b);
     }
     public void setCristales(double a) {
         long resultado = Math.round(a * (4 * Math.PI * Math.pow(radio, 2)));
@@ -69,8 +69,14 @@ public abstract class Planeta {
     //El retorno de esta funcion da paso a que se inicialice el ciclo de extraccion de recursos
     public boolean visitar(Jugador jugador) {
         setJugador(jugador);
-        System.out.println("Aterrizando en el planeta...");
-        System.out.println("Realizando escaneo de recursos...\n");
+        
+        GameUtils.animarTextoConDesvanecimiento("\nPreparando viaje");
+        GameUtils.animarPuntos("...");
+        GameUtils.mostrarBarraProgreso(5000); // Duración del viaje en milisegundos (5 segundos)
+        GameUtils.animarTextoConDesvanecimiento("\n¡Has llegado al planeta!\n");
+        
+        GameUtils.animarTextoConDesvanecimiento("\nRealizando escaneo de recursos");
+        GameUtils.animarPuntos("...");
         System.out.println("Cantidad de Cristales de Hidrogeno escaneados: " + cristalesHidrogeno);
         
         

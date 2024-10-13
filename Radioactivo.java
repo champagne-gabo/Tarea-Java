@@ -12,7 +12,7 @@ public class Radioactivo extends Planeta {
 
         setCristales(0.2); 
         setFlores(0.2);    
-        radiacion = RandomUtils.rand(10, 50);
+        radiacion = GameUtils.rand(10, 50);
         setUranio();
         
         setConsumoEnergia(0.3, radiacion);

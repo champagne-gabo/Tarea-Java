@@ -12,7 +12,7 @@ public class Volcanico extends Planeta {
 
         setCristales(0.3); 
         setFlores(0);    
-        temperatura  = RandomUtils.rand(120, 256);
+        temperatura  = GameUtils.rand(120, 256);
         setPlatino();
         setConsumoEnergia(0.08, temperatura);
         
