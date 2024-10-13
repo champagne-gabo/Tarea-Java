@@ -2,3 +2,7 @@ chequear si se restó bien
 Revisar que todo esté funcionando bien en cuanto a extraccion
 Arreglar los negativos
 chequear si los tipos de datos están bien
+cambiar todos los inputs quitando el salto de linea para que responda en la misma linea de la pregunta
+el capeo en los recursos hace que (creo que siempre) se ponga el valor max de int
+chequear si los metodos de Planeta deben ser public abstract
+ver rangos de los tradeos

@@ -23,9 +23,6 @@ public abstract class Planeta {
         return cristalesHidrogeno;
     }
     
-    public void setRadio(int a, int b) {
-        this.radio = RandomUtils.rand(a, b);
-    }
     public int getFloresDeSodio() {
         return floresDeSodio;
     }
@@ -37,14 +34,29 @@ public abstract class Planeta {
     }
 
     //setters
-    public void setCristales(double a) {
-        this.cristalesHidrogeno = (int) Math.round(a * (4 * Math.PI * Math.pow(radio, 2)));
-        
-    }    
-    public void setFlores(double a) {
-        this.floresDeSodio = (int) Math.round(a * (4 * Math.PI * Math.pow(radio, 2)));
-        
+    public void setRadio(int a, int b) {
+        this.radio = RandomUtils.rand(a, b);
     }
+    public void setCristales(double a) {
+        long resultado = Math.round(a * (4 * Math.PI * Math.pow(radio, 2)));
+        
+        if (resultado > Integer.MAX_VALUE) {
+            this.cristalesHidrogeno = Integer.MAX_VALUE;
+        } else {
+            this.cristalesHidrogeno = (int) resultado;
+        }
+    }
+    
+    public void setFlores(double a) {
+        long resultado = Math.round(a * (4 * Math.PI * Math.pow(radio, 2)));
+        
+        if (resultado > Integer.MAX_VALUE) {
+            this.floresDeSodio = Integer.MAX_VALUE;
+        } else {
+            this.floresDeSodio = (int) resultado;
+        }
+    }
+    
     public void setConsumoEnergia(double a, int b) {
         this.consumoEnergia = (int) (a * b);
     }
@@ -58,8 +70,7 @@ public abstract class Planeta {
     public boolean visitar(Jugador jugador) {
         setJugador(jugador);
         System.out.println("Aterrizando en el planeta...");
-        System.out.println("Realizando escaneo de recursos...");
-        System.out.println("");
+        System.out.println("Realizando escaneo de recursos...\n");
         System.out.println("Cantidad de Cristales de Hidrogeno escaneados: " + cristalesHidrogeno);
         
         
@@ -81,6 +92,7 @@ public abstract class Planeta {
                 return 0;
             }
             cristalesHidrogeno -= unidadesRecurso;
+            
         } else if (tipo == 2) { // Flores de Sodio
             if (unidadesRecurso > floresDeSodio) {
                 System.out.println("No hay suficientes Flores de Sodio para extraer esa cantidad.");
@@ -91,6 +103,8 @@ public abstract class Planeta {
                 return 0;
             }
             floresDeSodio -= unidadesRecurso;
+            
+            
         } 
         jugador.agregarInventario(tipo, unidadesRecurso);
         System.out.println("\nProyectando estado de inventario después de la extracción...\n");
@@ -115,6 +129,13 @@ public abstract class Planeta {
         
 
         return unidadesRecurso;
+    }
+
+    public boolean salir(){
+        System.out.println("Preparando despegue...");
+        System.out.println("Saliendo a la orbita del planeta...");
+        //LOGICA PARA SALIR
+        return true;
     }
     
 }

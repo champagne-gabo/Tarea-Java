@@ -1,3 +1,3 @@
-public class tieneAsentamientos {
-    
+public interface tieneAsentamientos {
+    void visitarAsentamientos(Jugador jugador);
 }

@@ -13,11 +13,20 @@ public class Radioactivo extends Planeta {
         setCristales(0.2); 
         setFlores(0.2);    
         radiacion = RandomUtils.rand(10, 50);
-        uranio = (int) Math.round(0.25 * 4*Math.PI * Math.pow(getRadio(), 2)) * radiacion;
+        setUranio();
         
         setConsumoEnergia(0.3, radiacion);
     }
 
+    private void setUranio() {
+        long uranioCalculado = Math.round(0.25 * 4 * Math.PI * Math.pow(getRadio(), 2)) * radiacion;
+        if (uranioCalculado > Integer.MAX_VALUE) {
+            this.uranio = Integer.MAX_VALUE;
+        } else {
+            this.uranio = (int) uranioCalculado;
+        }
+    }
+    
     public int getUranio() {
         return uranio;
     }

@@ -13,11 +13,19 @@ public class Volcanico extends Planeta {
         setCristales(0.3); 
         setFlores(0);    
         temperatura  = RandomUtils.rand(120, 256);
-        platino = (int) Math.round((0.25 * 4 * (Math.PI * Math.pow(getRadio(), 2))) - (20.5 * Math.pow(temperatura, 2)));
+        setPlatino();
         setConsumoEnergia(0.08, temperatura);
         
     }
 
+    private void setPlatino() {
+        long platinoCalculado = Math.round((0.25 * 4 * (Math.PI * Math.pow(getRadio(), 2))) - (20.5 * Math.pow(temperatura, 2)));
+        if (platinoCalculado > Integer.MAX_VALUE) {
+            this.platino = Integer.MAX_VALUE;
+        } else {
+            this.platino = (int) platinoCalculado;
+        }
+    }
     public int getTemperatura() {
         return temperatura;
     }

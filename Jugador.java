@@ -35,6 +35,9 @@ public class Jugador {
     public float getMaxEnergia() {
         return maxEnergia;
     }
+    public int getRecurso(int tipo){
+        return inventario.get(tipo);
+    }
 
     //setters
     public void setEnergiaProteccion(int energia){
@@ -70,9 +73,7 @@ public class Jugador {
     public void agregarInventario(int tipo, int cantidad) {
         if (inventario.containsKey(tipo)) {
             inventario.put(tipo, inventario.get(tipo) + cantidad);
-        } else {
-            System.out.println("Tipo de recurso no válido: " + tipo);
-        }
+        } 
     }
     
 

@@ -1,1 +1,3 @@
 mapa con llave nombre de aldeano, valor su dialogo
+
+alertar cuando la energia o combustible sea muy bajo
