@@ -43,7 +43,7 @@ public class GameUtils {
     public static void animarTextoConDesvanecimiento(String mensaje) {
         for (char c : mensaje.toCharArray()) {
             System.out.print(c);
-            pausar(70); 
+            pausar(55); 
         }
     }
 }

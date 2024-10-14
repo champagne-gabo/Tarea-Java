@@ -8,5 +8,9 @@ chequear si los metodos de Planeta deben ser public abstract
 ver rangos de los tradeos
 arreglar dialogo tradeo
 solo se puede tradear con uranio y platino, yo estoy tradeando con flores y cristales, arreglar
-si el jugador no recarga o algo muere (lo que dijo el benja)
+si el jugador no recarga o algo muere (lo que dijo el benja) update: creo que si intento hacer x viaje y el combustible no da, matarlo
 pasar los metodos de helado de tradeo a tieneAsentamientos lo que sea en general para ambos
+TENER OJO CON LOS BREAK, al parecer si manejo la logica en el main no necesitaria ningun break
+tengo un metodo para mejorar el tamaño maximo de el tanque de combustible, puedo añadir como tradeo aumentar entre [20,100] a cambio de platino y uranio
+cambiar que tradear sea 3 y salir sea 2 o arreglar eso
+Problema con que el primer planeta no se guarda bien como primer planeta !MAXIMA PRIORIDAD update: arreglado (igual chequear)

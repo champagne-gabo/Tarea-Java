@@ -27,7 +27,7 @@ public class Helado extends Planeta implements tieneAsentamientos {
         dialogos.add("¡HOLA! Soy Hugo, estoy ansioso de hacer tratos contigo\n");
         dialogos.add("Buenas, soy Andrea, tengo cosas que podrías necesitar. ¿Interesado en comerciar?\n");
         dialogos.add("Heyy, soy Diego! Si quieres sobrevivir en el espacio, debes ser astuto. ¿Tienes lo que se necesita para negociar?\n");
-        dialogos.add("Holaa, soy Elena, una fría comerciante. ¿Qué puedes ofrecerme a cambio de mis secretos?\n");
+        dialogos.add("Holaa, soy Elena, una fría comerciante. Cuento con varios secretos en el ambito de la tecnología\n");
         tradeo = new Tradeo();
     }
 
@@ -40,7 +40,8 @@ public class Helado extends Planeta implements tieneAsentamientos {
         int indiceAleatorio = random.nextInt(dialogos.size()); 
         String mensaje = dialogos.get(indiceAleatorio); 
         
-        System.out.println(mensaje); 
+        
+        GameUtils.animarTextoConDesvanecimiento(mensaje);
     }
 
     @Override
@@ -71,8 +72,8 @@ public class Helado extends Planeta implements tieneAsentamientos {
                 visitarAsentamientos(jugador);
                 break;
             case 3:
-                System.out.println("Saliendo del planeta...");
-                break;
+                salir();
+                
         }
         
         return true;

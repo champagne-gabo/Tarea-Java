@@ -72,12 +72,12 @@ public abstract class Planeta {
         
         GameUtils.animarTextoConDesvanecimiento("\nPreparando viaje");
         GameUtils.animarPuntos("...");
-        GameUtils.mostrarBarraProgreso(5000); // Duración del viaje en milisegundos (5 segundos)
+        GameUtils.mostrarBarraProgreso(4000); // Duración del viaje en milisegundos (5 segundos)
         GameUtils.animarTextoConDesvanecimiento("\n¡Has llegado al planeta!\n");
         
         GameUtils.animarTextoConDesvanecimiento("\nRealizando escaneo de recursos");
         GameUtils.animarPuntos("...");
-        System.out.println("Cantidad de Cristales de Hidrogeno escaneados: " + cristalesHidrogeno);
+        System.out.println("\nCantidad de Cristales de Hidrogeno escaneados: " + cristalesHidrogeno);
         
         
         return true;
@@ -137,12 +137,35 @@ public abstract class Planeta {
         return unidadesRecurso;
     }
 
-    public boolean salir(){
+    public boolean salir() {
         System.out.println("Preparando despegue...");
-        System.out.println("Saliendo a la orbita del planeta...");
-        //LOGICA PARA SALIR
-        //Quizas settear como NULL jugador
-        return true;
+        
+        
+        System.out.println("¿Estás seguro de que quieres salir del planeta?\n");
+        System.out.println("1. Sí");
+        System.out.println("2. No");
+        
+
+        int decision = scanner.nextInt();
+        
+        if (decision==1) {
+            
+            GameUtils.animarTextoConDesvanecimiento("Saliendo a la órbita del planeta");
+            GameUtils.animarPuntos("...\n");
+            GameUtils.mostrarBarraProgreso(4000); 
+            System.out.println("\nHas salido del planeta.");
+            
+            
+            this.jugador = null; // Se desasocia el jugador del planeta actual
+            
+            
+            return true;
+        } else {
+            
+            System.out.println("Ok, veamos qué más se puede hacer");
+            return false;
+        }
     }
+    
     
 }

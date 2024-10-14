@@ -6,16 +6,22 @@ public class Tradeo {
     public void mostrarTradeos(Jugador jugador, int eleccion) {
         int[] cantidadesNecesarias = new int[4];
         int[] aumentos = new int[4];
+        String tipo;
 
         for (int i = 0; i < 4; i++) {
             cantidadesNecesarias[i] = GameUtils.rand(100, 250); // Rango para cantidades
             aumentos[i] = GameUtils.rand(2, 18); // Rango para aumentos
         }
-
-        System.out.println("1. +" + aumentos[0] + "% de eficiencia : " + cantidadesNecesarias[0] + " de " + jugador.getNombreRecurso(3));
-        System.out.println("2. +" + aumentos[1] + "% de eficiencia : " + cantidadesNecesarias[1] + " de " + jugador.getNombreRecurso(3));
-        System.out.println("3. +" + aumentos[2] + "% de eficiencia : " + cantidadesNecesarias[2] + " de " + jugador.getNombreRecurso(4));
-        System.out.println("4. +" + aumentos[3] + "% de eficiencia : " + cantidadesNecesarias[3] + " de " + jugador.getNombreRecurso(4));
+        if(eleccion==1){
+            tipo = "protección"; 
+        }
+        else{
+            tipo = "propulsor"; 
+        }
+        System.out.println("1. +" + aumentos[0] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[0] + " de " + jugador.getNombreRecurso(3));
+        System.out.println("2. +" + aumentos[1] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[1] + " de " + jugador.getNombreRecurso(3));
+        System.out.println("3. +" + aumentos[2] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[2] + " de " + jugador.getNombreRecurso(4));
+        System.out.println("4. +" + aumentos[3] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[3] + " de " + jugador.getNombreRecurso(4));
 
         int trade = scanner.nextInt();
         int recurso = (trade == 1 || trade == 2) ? 3 : 4; // Determinar el recurso a usar

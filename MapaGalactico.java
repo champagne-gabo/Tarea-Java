@@ -13,10 +13,13 @@ public class MapaGalactico {
         this.planetas = new ArrayList<>();
         this.random = new Random();
         this.posicion = 0;  
-        planetas.add(generadorPlaneta());
+        inicializarMapa();
         
     }
 
+    private void inicializarMapa() {
+        planetas.add(generadorPlaneta()); // Agregar el primer planeta aquí
+    }
     
     public Planeta generadorPlaneta() {
         int tipoPlaneta = random.nextInt(100); 
@@ -50,7 +53,7 @@ public class MapaGalactico {
         
         System.out.println("Lista de planetas generados:");
         for (int i = 0; i < planetas.size(); i++) {
-            System.out.println(i + ": " + planetas.get(i).getClass().getSimpleName());
+            System.out.println(i + ": " + planetas.get(i));
         }
         
         System.out.println("Selecciona el índice del planeta que deseas visitar:");
@@ -59,22 +62,44 @@ public class MapaGalactico {
     }
 
     
-    public Planeta avanzarAPlaneta(int salto) {
-        
-        int nuevaPos = posicion + salto;
-
-        
-        while (nuevaPos >= planetas.size()) {
-            generadorPlaneta();
+    public Planeta actualizarPos(int salto, int direccion) {
+        int nuevaPos;
+        if (direccion == 1) { // Izquierda
+            nuevaPos = posicion - salto;
+        } else { // Derecha
+            nuevaPos = posicion + salto;
         }
-
         
-        posicion = nuevaPos;
-        return planetas.get(posicion); 
+        // Asegúrate de no ir más allá de la posición 0
+        if (nuevaPos < 0) {
+            System.out.println("No puedes hacer un salto a la izquierda desde el planeta inicial.");
+            return planetas.get(posicion); // Mantener la posición actual
+            
+        }
+    
+        // Si la nueva posición es igual a la lista de planetas, generamos nuevos
+        while (nuevaPos >= planetas.size()) {
+            planetas.add(generadorPlaneta()); // Agregar el nuevo planeta a la lista
+        }
+    
+        posicion = nuevaPos; // Actualiza la posición
+        return planetas.get(posicion); // Devuelve el planeta en la nueva posición
     }
+    
+    
+    
+    
+    
 
     
     public int getPosicion() {
         return posicion;
     }
+    public Planeta getPlanetaEnPosicion(int posicion) {
+        if (posicion >= 0 && posicion < planetas.size()) {
+            return planetas.get(posicion);
+        }
+        return null; // O lanzar una excepción si es necesario
+    }
+    
 }

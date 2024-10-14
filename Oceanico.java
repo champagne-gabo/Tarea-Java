@@ -54,6 +54,8 @@ public class Oceanico extends Planeta implements tieneAsentamientos {
 
         switch (decision) {
             case 1:
+                System.out.println("Qué recurso deseas extraer?");
+                System.out.println("");
                 System.out.println("1. Cristales de Hidrógeno");
                 System.out.println("2. Flores de Sodio");
                 int tipoRecurso = scanner.nextInt();

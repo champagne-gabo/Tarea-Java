@@ -33,31 +33,54 @@ public class Nave {
 
     //Metodos aparte
     public void recargarPropulsores(int hidrogeno) {
-        this.unidadesCombustible = (float) 0.6 * hidrogeno * (1+eficienciaPropulsor);
+        this.unidadesCombustible = Math.min(maxCombustible, 0.6f * hidrogeno * (1 + eficienciaPropulsor));
     }
 
-    //public boolean viajarPlaneta(MapaGalactico MP, int direccion, int tamanoSalto){
+    public boolean viajarPlaneta(MapaGalactico MG, int direccion, int tamanoSalto) {
+        if (direccion == 1 && MG.getPosicion() == 0) {
+            System.out.println("No puedes hacer un salto a la izquierda desde el planeta inicial.");
+            return false; 
+        }
+        float consumido = calcularGastoCombustible(tamanoSalto);
+        if (consumido == 0) {
+            System.out.println("No hay suficiente combustible para realizar el viaje.");
+            return false; // No se puede viajar
+        }
+    
+        consumirCombustible(consumido);
+        MG.actualizarPos(tamanoSalto, direccion); 
+    
+        System.out.println("Viaje realizado con éxito. Combustible restante: " + unidadesCombustible);
+        return true;
+    }
+    
 
 
-    //}
-
-    public void consumirCombustible(int tamanoSalto) {
+    public void consumirCombustible(float consumido) {
         if (unidadesCombustible > 0) {
-            this.unidadesCombustible -= calcularGastoCombustible(tamanoSalto);
+            this.unidadesCombustible -= consumido;
             if (this.unidadesCombustible < 0) {
-                this.unidadesCombustible = 0; // No puede ser negativa
+                this.unidadesCombustible = 0; 
             }
         }
     }
-    //Deshacer esta funcion e implementarlo en los viajes
-    protected int calcularGastoCombustible(int tamanoSalto) {
-        int unidadesConsumidas = (int) Math.round(0.75 * Math.pow(tamanoSalto, 2) * (1 + eficienciaPropulsor));
+    
+    private float calcularGastoCombustible(int tamanoSalto) {
+        float unidadesConsumidas =  Math.round(0.75 * Math.pow(tamanoSalto, 2) * (1 + eficienciaPropulsor));
         if (unidadesConsumidas > unidadesCombustible) {
             System.out.println("No tienes suficiente combustible para realizar ese viaje.");
             return 0;
         }
-        System.out.println("Se consumió " + unidadesCombustible + " unidades de combustibl;e.");
+        System.out.println("Se consumió " + unidadesConsumidas + " unidades de combustible.");
         return unidadesConsumidas;
     }
+
+    public void mejorarMaxCombustible(float aumento) {
+        if (aumento > 0) {
+            this.maxCombustible += aumento;
+            System.out.println("Máxima capacidad de combustible aumentada a: " + maxCombustible);
+        }
+    }
+    
 
 }
