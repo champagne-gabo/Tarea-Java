@@ -40,10 +40,27 @@ public class GameUtils {
         System.out.println(); 
     }
 
-    public static void animarTextoConDesvanecimiento(String mensaje) {
+    public static void animarTexto(String mensaje) {
         for (char c : mensaje.toCharArray()) {
             System.out.print(c);
             pausar(55); 
         }
     }
+    public static void advertenciaCombustible() {
+        System.out.println("╔═══════════════════════════╗");
+        System.out.println("║      ¡ADVERTENCIA!        ║");
+        System.out.println("║     Combustible bajo      ║");
+        System.out.println("║                           ║");
+        System.out.println("╚═══════════════════════════╝");
+        System.out.println("\nDebes recargar pronto para evitar fallos críticos...");
+    }
+    public static void advertenciaEnergia() {
+        System.out.println("╔═══════════════════════════╗");
+        System.out.println("║      ¡ADVERTENCIA!        ║");
+        System.out.println("║       Energía baja        ║");
+        System.out.println("║                           ║");
+        System.out.println("╚═══════════════════════════╝");
+        System.out.println("\nDebes recargar pronto para evitar fallos críticos...");
+    }
+    
 }

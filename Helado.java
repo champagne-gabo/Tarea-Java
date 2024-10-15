@@ -10,7 +10,6 @@ public class Helado extends Planeta implements tieneAsentamientos {
     
     public Helado() {
         super();
-        
         setRadio(1000, 1000000); 
 
         setCristales(0.65); 
@@ -28,6 +27,8 @@ public class Helado extends Planeta implements tieneAsentamientos {
         dialogos.add("Buenas, soy Andrea, tengo cosas que podrías necesitar. ¿Interesado en comerciar?\n");
         dialogos.add("Heyy, soy Diego! Si quieres sobrevivir en el espacio, debes ser astuto. ¿Tienes lo que se necesita para negociar?\n");
         dialogos.add("Holaa, soy Elena, una fría comerciante. Cuento con varios secretos en el ambito de la tecnología\n");
+        dialogos.add("¡Heeyy! Me llamo Rizo, y me las freezo puñeta, jaja broma ¿Quieres que te cuente cómo puedes mejorar tus habilidades?"); 
+
         tradeo = new Tradeo();
     }
 
@@ -41,60 +42,43 @@ public class Helado extends Planeta implements tieneAsentamientos {
         String mensaje = dialogos.get(indiceAleatorio); 
         
         
-        GameUtils.animarTextoConDesvanecimiento(mensaje);
+        GameUtils.animarTexto(mensaje);
     }
 
     @Override
-    public boolean visitar(Jugador jugador) {
-        super.visitar(jugador); 
+    public boolean visitar(Jugador jugador) { 
+        
+        setJugador(jugador);
+        
+        GameUtils.animarTexto("\nPreparando viaje");
+        GameUtils.animarPuntos("...");
+        GameUtils.mostrarBarraProgreso(4000); 
+        GameUtils.animarTexto("\n¡Has llegado al planeta " + getNamePlaneta() + "!\n");
+
+        
+        GameUtils.animarTexto("\nRealizando escaneo");
+        GameUtils.animarPuntos("...");
+        System.out.println("\nTemperatura escaneada: " + getTemperatura()+ "°C");
+        System.out.println("Cantidad de Cristales de Hidrogeno escaneados: " + getCristalesHidrogeno());
         System.out.println("Cantidad de Flores de Sodio escaneadas: " + getFloresDeSodio());
         
-        System.out.println("\n¿Qué desea hacer en el planeta?");
-        System.out.println("1. Extraer recursos");
-        System.out.println("2. Tradear con los habitantes");
-        System.out.println("3. Salir del planeta");
-        int decision = scanner.nextInt();
-
-        switch (decision) {
-            case 1:
-                System.out.println("Qué recurso deseas extraer?");
-                System.out.println("");
-                System.out.println("1. Cristales de Hidrógeno");
-                System.out.println("2. Flores de Sodio");
-                int tipoRecurso = scanner.nextInt();
-                extraerRecursos(tipoRecurso); 
-                
-                
-                break;
-
-            case 2:
-                
-                visitarAsentamientos(jugador);
-                break;
-            case 3:
-                salir();
-                
-        }
-        
         return true;
-        }
+    }
 
         @Override
         public void visitarAsentamientos(Jugador jugador) {
-            System.out.print("Aterrizando a las afueras del asentamiento");
-            GameUtils.animarPuntos("...\n");
             
             
             
-            System.out.print("Camino a los locatarios");
+            System.out.print("\nCamino a los locatarios");
             GameUtils.animarPuntos("...\n");
             
             System.out.println("Ha aparecido un nativo\n");
     
             conversacion();
     
-            System.out.println("1. Mejoras para el exotraje");
-            System.out.println("2. Mejoras para la nave");
+            System.out.println("\n1. Mejoras para el exotraje");
+            System.out.println("2. Mejoras para la nave\n");
     
             int eleccion = scanner.nextInt();
             tradeo.mostrarTradeos(jugador, eleccion); 

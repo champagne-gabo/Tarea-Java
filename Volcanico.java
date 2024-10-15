@@ -36,38 +36,21 @@ public class Volcanico extends Planeta {
    
 
     @Override
-    public boolean visitar(Jugador jugador) {
-        super.visitar(jugador); 
+    public boolean visitar(Jugador jugador) { 
         
-        System.out.println("La cantidad de platino es: " + platino);
+        setJugador(jugador);
         
+        GameUtils.animarTexto("\nPreparando viaje");
+        GameUtils.animarPuntos("...");
+        GameUtils.mostrarBarraProgreso(4000); 
+        GameUtils.animarTexto("\n¡Has llegado al planeta " + getNamePlaneta() + "!\n");
 
-        System.out.println("\n¿Qué desea hacer en el planeta?");
-        System.out.println("1. Extraer recursos");
         
-        System.out.println("2. Salir del planeta");
-        int decision = scanner.nextInt();
-        
-
-        switch (decision) {
-            case 1:
-                System.out.println("Qué recurso deseas extraer?");
-                System.out.println("");
-                System.out.println("1. Cristales de Hidrógeno");
-                System.out.println("2. Platino");
-                
-                int tipoRecurso = scanner.nextInt();
-                if (tipoRecurso == 2) {
-                    tipoRecurso = 4;
-                }
-                int cantidadExtraida = extraerRecursos(tipoRecurso); 
-                jugador.agregarInventario(tipoRecurso, cantidadExtraida);
-                break;
-            
-            case 2:
-                System.out.println("Saliendo del planeta...");
-                break;
-        }
+        GameUtils.animarTexto("\nRealizando escaneo");
+        GameUtils.animarPuntos("...");
+        System.out.println("\nTemperatura escaneada: " + getTemperatura()+ "°C");
+        System.out.println("Cantidad de Cristales de Hidrogeno escaneados: " + getCristalesHidrogeno());
+        System.out.println("Cantidad de Platino escaneado: " + getPlatino());
         
         return true;
     }
@@ -77,17 +60,14 @@ public class Volcanico extends Planeta {
     public int extraerRecursos(int tipo) {
         Jugador jugador = getJugador();
         if (tipo == 4) { // Platino
-            System.out.println("\n¿Cuánto uranio deseas extraer?");
+            System.out.println("\n¿Cuánto platino deseas extraer?");
             int unidadesRecurso = scanner.nextInt();
             if (unidadesRecurso > platino) {
-                System.out.println("No hay suficiente Uranio para extraer esa cantidad.");
+                System.out.println("No hay suficiente Platino para extraer esa cantidad.");
                 return 0;
             }
             int unidadesConsumidas = (int) Math.round(0.5 * unidadesRecurso * (getConsumoEnergia() / 100) * (1 - jugador.getEficienciaProtec()));
-            if (unidadesConsumidas > jugador.getEnergiaProtec()) {
-                System.out.println("No tienes suficiente energía para extraer esa cantidad de recursos.");
-                return 0;
-            }
+            
             platino -= unidadesRecurso;
 
             jugador.agregarInventario(tipo, unidadesRecurso);
@@ -95,10 +75,12 @@ public class Volcanico extends Planeta {
 
             jugador.mostrarInventario();
 
-            System.out.println("\nConsumiste " + unidadesConsumidas + " unidades de energía.");
             jugador.consumirEnergia(unidadesConsumidas);
+            if (jugador.getEnergiaProtec() > 0){
+                System.out.println("\nConsumiste " + unidadesConsumidas + " unidades de energía.");
+                System.out.println("\nEnergía actual: " + jugador.getEnergiaProtec() + " unidades de energía.\n");
 
-            System.out.println("\nEnergía actual: " + jugador.getEnergiaProtec() + " unidades de energía.\n");
+            }
 
             return unidadesRecurso;
         }

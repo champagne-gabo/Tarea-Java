@@ -18,7 +18,7 @@ public class Tradeo {
         else{
             tipo = "propulsor"; 
         }
-        System.out.println("1. +" + aumentos[0] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[0] + " de " + jugador.getNombreRecurso(3));
+        System.out.println("\n1. +" + aumentos[0] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[0] + " de " + jugador.getNombreRecurso(3));
         System.out.println("2. +" + aumentos[1] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[1] + " de " + jugador.getNombreRecurso(3));
         System.out.println("3. +" + aumentos[2] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[2] + " de " + jugador.getNombreRecurso(4));
         System.out.println("4. +" + aumentos[3] + "% de eficiencia de " + tipo + " : " + cantidadesNecesarias[3] + " de " + jugador.getNombreRecurso(4));
@@ -40,7 +40,7 @@ public class Tradeo {
             jugador.agregarInventario(recurso, -cantidadNecesaria);
             jugador.setEficienciaProtec(jugador.getEficienciaProtec() + aumento);
         } else {
-            System.out.println("No tienes materiales suficientes para el tradeo");
+            System.out.println("\nNo tienes materiales suficientes para el tradeo");
         }
     }
 

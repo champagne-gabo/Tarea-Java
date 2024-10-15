@@ -7,6 +7,7 @@ public abstract class Planeta {
     private int floresDeSodio;
     private double consumoEnergia;
     private Jugador jugador;
+    private String namePlaneta;
 
     public Planeta() {
         this.radio = 0;
@@ -31,6 +32,9 @@ public abstract class Planeta {
     }
     public Jugador getJugador() {
         return jugador;
+    }
+    public String getNamePlaneta(){
+        return namePlaneta;
     }
 
     //setters
@@ -63,51 +67,44 @@ public abstract class Planeta {
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
+    public void setNamePlaneta(String namePlaneta){
+        this.namePlaneta = namePlaneta;
+    }
 
     //Metodos aparte
     // La idea es en el main, dsp de crear el planeta preguntarle al jugador si quiere visitarlo, si dice que si, se llama a este metodo
     //El retorno de esta funcion da paso a que se inicialice el ciclo de extraccion de recursos
+    /* 
     public boolean visitar(Jugador jugador) {
         setJugador(jugador);
         
-        GameUtils.animarTextoConDesvanecimiento("\nPreparando viaje");
+        GameUtils.animarTexto("\nPreparando viaje");
         GameUtils.animarPuntos("...");
         GameUtils.mostrarBarraProgreso(4000); // Duración del viaje en milisegundos (5 segundos)
-        GameUtils.animarTextoConDesvanecimiento("\n¡Has llegado al planeta!\n");
+        GameUtils.animarTexto("\n¡Has llegado al planeta!\n");
         
-        GameUtils.animarTextoConDesvanecimiento("\nRealizando escaneo de recursos");
+        GameUtils.animarTexto("\nRealizando escaneo de recursos");
         GameUtils.animarPuntos("...");
         System.out.println("\nCantidad de Cristales de Hidrogeno escaneados: " + cristalesHidrogeno);
         
         
         return true;
-    }
 
+        
+    }
+    */
+    public abstract boolean visitar(Jugador jugador);
 
     public int extraerRecursos(int tipo) {
         System.out.println("\n¿Cuánto deseas extraer?");
         int unidadesRecurso = scanner.nextInt();
         int unidadesConsumidas = (int) Math.round(0.5 * unidadesRecurso * (consumoEnergia / 100) * (1 - jugador.getEficienciaProtec()));
         if (tipo == 1) { // Cristales de Hidrógeno
-            if (unidadesRecurso > cristalesHidrogeno) {
-                System.out.println("No hay suficientes Cristales de Hidrógeno para extraer esa cantidad.");
-                return 0;
-            }
-            if (unidadesConsumidas > jugador.getEnergiaProtec()) {
-                System.out.println("No tienes suficiente energía para extraer esa cantidad de recursos.");
-                return 0;
-            }
+            
             cristalesHidrogeno -= unidadesRecurso;
             
         } else if (tipo == 2) { // Flores de Sodio
-            if (unidadesRecurso > floresDeSodio) {
-                System.out.println("No hay suficientes Flores de Sodio para extraer esa cantidad.");
-                return 0;
-            }
-            if (unidadesConsumidas > jugador.getEnergiaProtec()) {
-                System.out.println("No tienes suficiente energía para extraer esa cantidad de recursos.");
-                return 0;
-            }
+            
             floresDeSodio -= unidadesRecurso;
             
             
@@ -118,19 +115,16 @@ public abstract class Planeta {
         jugador.mostrarInventario();
         
         
-        System.out.println("Depuracion\n");
-
-        System.out.println("unidadesRecursos: " + unidadesRecurso);
-        System.out.println("consumoEnergia: " + consumoEnergia);
-        System.out.println("eficienciaProtec: " + jugador.getEficienciaProtec());
-        System.out.println("unidadesConsumidas: " + unidadesConsumidas);
-        System.out.println("Fin de la depuracion\n " );
         
-        
-        System.out.println("\nConsumiste " + unidadesConsumidas + " unidades de energía.");
         jugador.consumirEnergia(unidadesConsumidas);
+        if (jugador.getEnergiaProtec() > 0){
+            System.out.println("\nConsumiste " + unidadesConsumidas + " unidades de energía.");
+            
         
-        System.out.println("\nEnergía actual: " + jugador.getEnergiaProtec() + " unidades de energía.\n");
+            System.out.println("\nEnergía actual: " + jugador.getEnergiaProtec() + " unidades de energía.\n");
+
+        }
+        
         
         
 
@@ -150,13 +144,13 @@ public abstract class Planeta {
         
         if (decision==1) {
             
-            GameUtils.animarTextoConDesvanecimiento("Saliendo a la órbita del planeta");
+            GameUtils.animarTexto("Saliendo a la órbita del planeta");
             GameUtils.animarPuntos("...\n");
             GameUtils.mostrarBarraProgreso(4000); 
             System.out.println("\nHas salido del planeta.");
             
             
-            this.jugador = null; // Se desasocia el jugador del planeta actual
+            this.jugador = null; 
             
             
             return true;

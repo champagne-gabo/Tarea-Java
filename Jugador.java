@@ -6,6 +6,7 @@ public class Jugador {
     private float eficienciaEnergiaProteccion;
     private float maxEnergia;
     private final Nave nave;
+    private String namePJ;
 
     public Jugador() {
         inventario = new HashMap<>();
@@ -14,11 +15,13 @@ public class Jugador {
         inventario.put(2,0); // 2: Flores de Sodio
         inventario.put(3,0); // 3: Uranio
         inventario.put(4,0); // 4: Platino
+        
 
         diccionario.put(1, "Cristales de Hidrógeno");
         diccionario.put(2, "Flores de Sodio");
         diccionario.put(3, "Uranio");
         diccionario.put(4, "Platino");
+        
         
         this.maxEnergia = (float) 100.0;
         this.unidadesEnergiaProteccion =  maxEnergia;
@@ -45,6 +48,9 @@ public class Jugador {
     public Nave getNave() { 
         return nave;
     }
+    public String getNamePJ(){
+        return namePJ;
+    }
 
     //setters
     public void setEnergiaProteccion(int energia){
@@ -56,20 +62,50 @@ public class Jugador {
     public void setMaxEnergia(float maxEnergia) {
         this.maxEnergia = maxEnergia;
     }
+    public void setNamePJ(String namePJ){
+        this.namePJ = namePJ;
+    }
 
     //Metodos aparte
     public void recargarEnergiaProteccion(float sodio){
-        this.unidadesEnergiaProteccion =(float) 0.65 * sodio * (1 + eficienciaEnergiaProteccion);
+        float recarga =(float) 0.65 * sodio * (1 + eficienciaEnergiaProteccion);
+        if (recarga > maxEnergia){
+            this.unidadesEnergiaProteccion = maxEnergia;
+            System.out.println("\nSe ha rebalsado el máximo de capacidad, por tanto has perdido recursos\n");
+        }
+        else{
+            this.unidadesEnergiaProteccion = recarga;
+        }
     }
 
     public void consumirEnergia(float energia) {
         if (energia > 0) {
             this.unidadesEnergiaProteccion -= energia;
-            if (this.unidadesEnergiaProteccion < 0) {
-                this.unidadesEnergiaProteccion = 0; // No puede ser negativa
-            }
+            
         }
     }
+    
+    public void activarEmergencia(MapaGalactico mapa) {
+        if (unidadesEnergiaProteccion <= 0) {
+            System.out.println("¡Te has quedado sin energía y sucumbes ante las adversidades del planeta!");
+    
+            
+            vaciarInventario();
+    
+            
+            unidadesEnergiaProteccion = maxEnergia;
+            System.out.println("Tu energía ha sido recargada: " + unidadesEnergiaProteccion);
+    
+            
+            nave.setCombustible(nave.getMaxCombustible());
+            System.out.println("El combustible de tu nave ha sido recargado: " + nave.getCombustible());
+    
+            
+            mapa.irAlPlanetaInicial();
+            
+        }
+    }
+    
     
 
     

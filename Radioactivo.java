@@ -36,36 +36,22 @@ public class Radioactivo extends Planeta {
 
     
     @Override
-    public boolean visitar(Jugador jugador) {
-        super.visitar(jugador); 
+    public boolean visitar(Jugador jugador) { 
         
+        setJugador(jugador);
+        
+        GameUtils.animarTexto("\nPreparando viaje");
+        GameUtils.animarPuntos("...");
+        GameUtils.mostrarBarraProgreso(4000); 
+        GameUtils.animarTexto("\n¡Has llegado al planeta " + getNamePlaneta() + "!\n");
+
+        
+        GameUtils.animarTexto("\nRealizando escaneo");
+        GameUtils.animarPuntos("...");
+        
+        System.out.println("\nCantidad de Cristales de Hidrogeno escaneados: " + getCristalesHidrogeno());
         System.out.println("Cantidad de Flores de Sodio escaneadas: " + getFloresDeSodio());
-        System.out.println("Cantidad de uranio escaneado: " + uranio);
-        
-
-        System.out.println("\n¿Qué desea hacer en el planeta?");
-        System.out.println("1. Extraer recursos");
-        System.out.println("2. Salir del planeta");
-        int decision = scanner.nextInt();
-        
-
-        switch (decision) {
-            case 1:
-                System.out.println("Qué recurso deseas extraer?");
-                System.out.println("");
-                System.out.println("1. Cristales de Hidrógeno");
-                System.out.println("2. Flores de Sodio");
-                System.out.println("3. Uranio");
-                
-                int tipoRecurso = scanner.nextInt();
-                int cantidadExtraida = extraerRecursos(tipoRecurso); 
-                jugador.agregarInventario(tipoRecurso, cantidadExtraida);
-                break;
-            
-            case 2:
-                System.out.println("Saliendo del planeta...");
-                break;
-        }
+        System.out.println("Cantidad de Uranio escaneado: " + getUranio());
         
         return true;
     }
@@ -82,20 +68,19 @@ public class Radioactivo extends Planeta {
                 return 0;
             }
             int unidadesConsumidas = (int) Math.round(0.5 * unidadesRecurso * (getConsumoEnergia() / 100) * (1 - jugador.getEficienciaProtec()));
-            if (unidadesConsumidas > jugador.getEnergiaProtec()) {
-                System.out.println("No tienes suficiente energía para extraer esa cantidad de recursos.");
-                return 0;
-            }
+            
             uranio -= unidadesRecurso;
             jugador.agregarInventario(tipo, unidadesRecurso);
             System.out.println("\nProyectando estado de inventario después de la extracción...\n");
 
             jugador.mostrarInventario();
 
-            System.out.println("\nConsumiste " + unidadesConsumidas + " unidades de energía.");
             jugador.consumirEnergia(unidadesConsumidas);
+            if (jugador.getEnergiaProtec() > 0){
+                System.out.println("\nConsumiste " + unidadesConsumidas + " unidades de energía.");
+                System.out.println("\nEnergía actual: " + jugador.getEnergiaProtec() + " unidades de energía.\n");
 
-            System.out.println("\nEnergía actual: " + jugador.getEnergiaProtec() + " unidades de energía.\n");
+            }
 
             return unidadesRecurso;
         }

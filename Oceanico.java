@@ -42,33 +42,21 @@ public class Oceanico extends Planeta implements tieneAsentamientos {
     }
 
     @Override
-    public boolean visitar(Jugador jugador) {
-        super.visitar(jugador); 
+    public boolean visitar(Jugador jugador) { 
+        
+        setJugador(jugador);
+        
+        GameUtils.animarTexto("\nPreparando viaje");
+        GameUtils.animarPuntos("...");
+        GameUtils.mostrarBarraProgreso(4000); 
+        GameUtils.animarTexto("\n¡Has llegado al planeta " + getNamePlaneta() + "!\n");
+
+        
+        GameUtils.animarTexto("\nRealizando escaneo");
+        GameUtils.animarPuntos("...");
+        System.out.println("\nProfundidad escaneada: " + getProfundidad()+ " [m]");
+        System.out.println("Cantidad de Cristales de Hidrogeno escaneados: " + getCristalesHidrogeno());
         System.out.println("Cantidad de Flores de Sodio escaneadas: " + getFloresDeSodio());
-
-        System.out.println("\n¿Qué desea hacer en el planeta?");
-        System.out.println("1. Extraer recursos");
-        System.out.println("2. Tradear con los habitantes");
-        System.out.println("3. Salir del planeta");
-        int decision = scanner.nextInt();
-
-        switch (decision) {
-            case 1:
-                System.out.println("Qué recurso deseas extraer?");
-                System.out.println("");
-                System.out.println("1. Cristales de Hidrógeno");
-                System.out.println("2. Flores de Sodio");
-                int tipoRecurso = scanner.nextInt();
-                extraerRecursos(tipoRecurso); 
-                
-                break;
-            case 2:
-                System.out.println("Hola tradeemos.");
-                break;
-            case 3:
-                System.out.println("Saliendo del planeta...");
-                break;
-        }
         
         return true;
     }

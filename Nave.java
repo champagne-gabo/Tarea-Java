@@ -33,7 +33,14 @@ public class Nave {
 
     //Metodos aparte
     public void recargarPropulsores(int hidrogeno) {
-        this.unidadesCombustible = Math.min(maxCombustible, 0.6f * hidrogeno * (1 + eficienciaPropulsor));
+        float recarga = Math.min(maxCombustible, 0.6f * hidrogeno * (1 + eficienciaPropulsor));
+        if (recarga > maxCombustible){
+            this.unidadesCombustible = maxCombustible;
+            System.out.println("\nSe ha rebalsado el máximo del tanque, por tanto has perdido recursos\n");
+        }
+        else{
+            this.unidadesCombustible = recarga;
+        }
     }
 
     public boolean viajarPlaneta(MapaGalactico MG, int direccion, int tamanoSalto) {
