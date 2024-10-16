@@ -25,3 +25,4 @@ LISTO ver rangos de los tradeos
 
 
 NOMBRE PLANETAS
+si combustible no alcanza matarlo
