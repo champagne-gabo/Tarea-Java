@@ -63,8 +63,7 @@ public class Oceanico extends Planeta implements tieneAsentamientos {
 
     @Override
     public void visitarAsentamientos(Jugador jugador) {
-        System.out.print("Aterrizando a las afueras del asentamiento");
-        GameUtils.animarPuntos("...\n");
+        
             
             
             
@@ -75,7 +74,7 @@ public class Oceanico extends Planeta implements tieneAsentamientos {
 
         conversacion();
 
-        System.out.println("1. Mejoras para el exotraje");
+        System.out.println("\n1. Mejoras para el exotraje");
         System.out.println("2. Mejoras para la nave");
 
         int eleccion = scanner.nextInt();

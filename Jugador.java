@@ -13,8 +13,8 @@ public class Jugador {
         diccionario = new HashMap<>();
         inventario.put(1,0); // 1: Cristales de Hidrogeno
         inventario.put(2,0); // 2: Flores de Sodio
-        inventario.put(3,0); // 3: Uranio
-        inventario.put(4,0); // 4: Platino
+        inventario.put(3,9999); // 3: Uranio
+        inventario.put(4,9999); // 4: Platino
         
 
         diccionario.put(1, "Cristales de Hidrógeno");
@@ -87,7 +87,7 @@ public class Jugador {
     
     public void activarEmergencia(MapaGalactico mapa) {
         if (unidadesEnergiaProteccion <= 0) {
-            System.out.println("¡Te has quedado sin energía y sucumbes ante las adversidades del planeta!");
+            System.out.println("¡Te has quedado sin energía||combustible y sucumbes ante las adversidades del planeta!");
     
             
             vaciarInventario();
@@ -129,7 +129,10 @@ public class Jugador {
     
 
     public void vaciarInventario() {
-        inventario.clear();
+        inventario.put(1,0); // 1: Cristales de Hidrogeno
+        inventario.put(2,0); // 2: Flores de Sodio
+        inventario.put(3,0); // 3: Uranio
+        inventario.put(4,0);
     }
     
 }

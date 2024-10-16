@@ -10,7 +10,7 @@ LISTO arreglar dialogo tradeo
 LISTO solo se puede tradear con uranio y platino, yo estoy tradeando con flores y cristales, arreglar
 LISTO si el jugador no recarga o algo muere (lo que dijo el benja) update: creo que si intento hacer x viaje y el combustible no da, matarlo
 LISTO pasar los metodos de helado de tradeo a tieneAsentamientos lo que sea en general para ambos
-TENER OJO CON LOS BREAK, al parecer si manejo la logica en el main no necesitaria ningun break
+LISTO TENER OJO CON LOS BREAK, al parecer si manejo la logica en el main no necesitaria ningun break
 
 LISTO cambiar que tradear sea 3 y salir sea 2 o arreglar eso
 LISTO Problema con que el primer planeta no se guarda bien como primer planeta !MAXIMA PRIORIDAD update: arreglado (igual chequear) 
@@ -20,5 +20,8 @@ LISTO durante la extraccion excediste tu limite de enrgia y moriste
 
 LISTO RECARGAR PROPULSOR O ENERGIA
 
-tengo un metodo para mejorar el tamaño maximo de el tanque de combustible, puedo añadir como tradeo aumentar entre [20,100] a cambio de platino y uranio
-ver rangos de los tradeos
+LISTO tengo un metodo para mejorar el tamaño maximo de el tanque de combustible, puedo añadir como tradeo aumentar entre [20,100] a cambio de platino y uranio
+LISTO ver rangos de los tradeos
+
+
+NOMBRE PLANETAS

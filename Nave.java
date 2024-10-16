@@ -51,9 +51,12 @@ public class Nave {
         float consumido = calcularGastoCombustible(tamanoSalto);
         if (consumido == 0) {
             System.out.println("No hay suficiente combustible para realizar el viaje.");
-            return false; // No se puede viajar
+            
+            return false; 
         }
-    
+        if((unidadesCombustible < 10) && (unidadesCombustible > 0)){
+            GameUtils.advertenciaCombustible();
+        }
         consumirCombustible(consumido);
         MG.actualizarPos(tamanoSalto, direccion); 
     
@@ -75,7 +78,7 @@ public class Nave {
     private float calcularGastoCombustible(int tamanoSalto) {
         float unidadesConsumidas =  Math.round(0.75 * Math.pow(tamanoSalto, 2) * (1 + eficienciaPropulsor));
         if (unidadesConsumidas > unidadesCombustible) {
-            System.out.println("No tienes suficiente combustible para realizar ese viaje.");
+            
             return 0;
         }
         System.out.println("Se consumió " + unidadesConsumidas + " unidades de combustible.");

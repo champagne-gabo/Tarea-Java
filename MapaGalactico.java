@@ -1,14 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class MapaGalactico {
     private final List<Planeta> planetas;  // Lista de planetas
     private final Random random;     // Generador aleatorio para planetas
     private int posicion; 
-    private final Scanner scanner = new Scanner(System.in);                
-
+    
     public MapaGalactico() {
         this.planetas = new ArrayList<>();
         this.random = new Random();
@@ -48,18 +46,17 @@ public class MapaGalactico {
     }
 
     
-    public Planeta seleccionarPlaneta() {
-        
-        
-        System.out.println("Lista de planetas generados:");
+    public void seleccionarPlaneta() {
+        System.out.println("Lista de planetas:");
         for (int i = 0; i < planetas.size(); i++) {
-            System.out.println(i + ": " + planetas.get(i));
+            if (i == posicion) {
+                System.out.println(i + ": " + planetas.get(i) + " <-- Aquí estás");
+            } else {
+                System.out.println(i + ": " + planetas.get(i));
+            }
         }
-        
-        System.out.println("\nSelecciona el índice del planeta que deseas visitar:\n");
-        int indice = scanner.nextInt();
-        return planetas.get(indice);
     }
+    
 
     
     public Planeta actualizarPos(int salto, int direccion) {
