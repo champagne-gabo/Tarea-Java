@@ -24,5 +24,17 @@ LISTO tengo un metodo para mejorar el tamaño maximo de el tanque de combustible
 LISTO ver rangos de los tradeos
 
 
-NOMBRE PLANETAS
-si combustible no alcanza matarlo
+LISTO NOMBRE PLANETAS
+NO HECHO PERO LISTO si combustible no alcanza matarlo
+
+REVISAR DONDE SE USE EFICIENCIA CORREGIR -->  (1 - (jugador.getEficienciaProtec())/100)
+
+
+LISTO DEBE LLEGAR AL CENTRO GALACTICO CON >=50% EFICIENCIA DE PROPULSOR DE NAVE
+
+CORREGIR CONSUMO DE ENERGIA INT --> FLOAT
+
+LISTO advertir al jugador por consumos altos en x planetas
+
+
+Intervalo tradeos

@@ -1,27 +1,27 @@
 import java.util.Scanner;
 
-public class Volcanico extends Planeta {
-    private int platino;
-    private final int temperatura;
+public class Radiactivo extends Planeta {
+    private  int uranio;
+    private final int radiacion;
     private final Scanner scanner = new Scanner(System.in);
 
-    public Volcanico() {
+    public Radiactivo() {
         super();
 
-        setRadio(1000,100000); 
+        setRadio(10000, 100000); 
 
-        setCristales(0.3); 
-        setFlores(0);    
-        temperatura  = GameUtils.rand(120, 256);
-        setPlatino();
-        setConsumoEnergia(0.08, temperatura);
+        setCristales(0.2); 
+        setFlores(0.2);    
+        radiacion = GameUtils.rand(10, 50);
+        setUranio();
         
+        setConsumoEnergia(0.3, radiacion);
     }
 
     /**
-     * Método setPlatino
+     * Método setUranio
      * 
-     * Descripción: Calcula la cantidad de platino en el planeta basado en su radio y temperatura.
+     * Descripción: Calcula la cantidad de uranio en el planeta basado en su radio y radiación.
      * 
      * Parámetros:
      * No recibe parametros
@@ -29,59 +29,59 @@ public class Volcanico extends Planeta {
      * Retorno:
      * No devuelve valor.
      */
-    private void setPlatino() {
-        long platinoCalculado = Math.round((0.25 * 4 * (Math.PI * Math.pow(getRadio(), 2))) - (20.5 * Math.pow(temperatura, 2)));
-        if (platinoCalculado > Integer.MAX_VALUE) {
-            this.platino = Integer.MAX_VALUE;
+    private void setUranio() {
+        long uranioCalculado = Math.round(0.25 * 4 * Math.PI * Math.pow(getRadio(), 2)) * radiacion;
+        if (uranioCalculado > Integer.MAX_VALUE) {
+            this.uranio = Integer.MAX_VALUE;
         } else {
-            this.platino = (int) platinoCalculado;
+            this.uranio = (int) uranioCalculado;
         }
     }
-
+    
     //Getters:
 
     /**
-     * Método getTemperatura
+     * Método getUranio
      * 
-     * Descripción: Devuelve la temperatura actual del planeta.
+     * Descripción: Devuelve la cantidad de uranio disponible en el planeta.
      * 
      * Parámetros:
      * No recibe parametros
      * 
      * Retorno:
-     * La temperatura del planeta.
+     * La cantidad de uranio en el planeta.
      */
-    public int getTemperatura() {
-        return temperatura;
+    public int getUranio() {
+        return uranio;
     }
 
     /**
-     * Método getPlatino
+     * Método getRadiacion
      * 
-     * Descripción: Devuelve la cantidad de platino disponible en el planeta.
+     * Descripción: Devuelve el nivel de radiación en el planeta.
      * 
      * Parámetros:
      * No recibe parametros
      * 
      * Retorno:
-     * La cantidad de platino en el planeta.
+     * El nivel de radiación.
      */
-    public int getPlatino() {
-        return platino;
+    public int getRadiacion() {
+        return radiacion;
     }
 
-   /**
+    /**
      * Método visitar
      * 
      * Descripción: Sobrescribe el método visitar de la clase Planeta. Permite al jugador visitar el planeta,
-     * realiza un escaneo y muestra información sobre la temperatura, los cristales de hidrógeno, y el platino disponible.
-     * Asigna al jugador al planeta mientras dure la visita
+     * realiza un escaneo y muestra la cantidad de uranio, flores de sodio y cristales de hidrógeno disponibles.
+     * Asignando tambien un jugador al planeta
      * 
      * Parámetros:
      * Jugador jugador - El jugador que visita el planeta.
      * 
      * Retorno:
-     * Devuelve true.
+     * Devuelve true al finalizar la visita.
      */
     @Override
     public boolean visitar(Jugador jugador) { 
@@ -93,13 +93,13 @@ public class Volcanico extends Planeta {
         GameUtils.mostrarBarraProgreso(4000); 
         GameUtils.animarTexto("\n¡Has llegado al planeta " + getNamePlaneta() + "!\n");
         System.out.println("\n---------------------------------------------");
-
         
         GameUtils.animarTexto("\nRealizando escaneo");
         GameUtils.animarPuntos("...");
-        System.out.println("\nTemperatura escaneada: " + getTemperatura()+ "°C");
-        System.out.println("Cantidad de Cristales de Hidrogeno escaneados: " + getCristalesHidrogeno());
-        System.out.println("Cantidad de Platino escaneado: " + getPlatino());
+        
+        System.out.println("\nCantidad de Cristales de Hidrogeno escaneados: " + getCristalesHidrogeno());
+        System.out.println("Cantidad de Flores de Sodio escaneadas: " + getFloresDeSodio());
+        System.out.println("Cantidad de Uranio escaneado: " + getUranio());
 
         if(getConsumoEnergia()>100){
             System.out.println("\nTen cuidado " + jugador.getNamePJ()+ ", he escaneado que este planeta tiene un consumo relativamente alto de energía");
@@ -108,14 +108,15 @@ public class Volcanico extends Planeta {
         return true;
     }
 
+
     /**
      * Método extraerRecursos
      * 
      * Descripción: Sobrescribe el método extraerRecursos de la clase Planeta para incluir la opción
-     * de extraer platino, además de los recursos comunes como cristales de hidrógeno mediante la super().
+     * de extraer uranio, además de los recursos comunes como cristales de hidrógeno y flores de sodio mediante la super().
      * 
      * Parámetros:
-     * int tipo - El tipo de recurso a extraer (1 para cristales de hidrógeno, 2 para flores de sodio, 4 para platino).
+     * int tipo - El tipo de recurso a extraer (1 para cristales de hidrógeno, 2 para flores de sodio, 3 para uranio).
      * 
      * Retorno:
      * Devuelve la cantidad de unidades de recurso extraídas.
@@ -123,25 +124,23 @@ public class Volcanico extends Planeta {
     @Override
     public int extraerRecursos(int tipo) {
         Jugador jugador = getJugador();
-        if (tipo == 4) { 
+        if (tipo == 3) { // Uranio
             System.out.println("\n---------------------------------------------");
-            System.out.println("\n¿Cuánto platino deseas extraer?\n");
+            System.out.println("\n¿Cuánto uranio deseas extraer?\n");
             int unidadesRecurso = scanner.nextInt();
-            if (unidadesRecurso > platino) {
-                System.out.println("No hay suficiente Platino para extraer esa cantidad.");
+            if (unidadesRecurso > uranio) {
+                System.out.println("No hay suficiente Uranio para extraer esa cantidad.");
                 return 0;
             }
             int unidadesConsumidas = (int) Math.round(0.5 * unidadesRecurso * (getConsumoEnergia() / 100) * (1 - (jugador.getEficienciaProtec())/100));
             
-            platino -= unidadesRecurso;
-
+            uranio -= unidadesRecurso;
             jugador.agregarInventario(tipo, unidadesRecurso);
             System.out.println("\n---------------------------------------------");
             System.out.println("\nProyectando estado de inventario después de la extracción...\n");
 
             jugador.mostrarInventario();
             System.out.println("\n---------------------------------------------");
-
             jugador.consumirEnergia(unidadesConsumidas);
             if (jugador.getEnergiaProtec() > 0){
                 System.out.println("\nConsumiste " + unidadesConsumidas + " unidades de energía.");
@@ -154,8 +153,8 @@ public class Volcanico extends Planeta {
         return super.extraerRecursos(tipo); 
     }
 
-    
 
-    
+
+
+
 }
-
