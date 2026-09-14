@@ -1,35 +1,28 @@
-No Java's Sky 
+# No Java's Sky
 
-A terminal-based space exploration game built in Java, inspired by No Man's Sky.
+A terminal-based space exploration game built in **Java**, inspired by *No Man's Sky*.
 
 Explore different planets, collect resources, trade with inhabitants, manage your ship and exosuit, and travel through the galaxy with one goal: reach the galactic center.
 
-Features
+## Features
 
--Multiple planet types with different characteristics
+- Multiple planet types with different characteristics
+- Resource extraction
+- Inventory system
+- Ship fuel and propulsion management
+- Exosuit energy management
+- Trading with planetary inhabitants
+- Galactic exploration and travel
+- Emergency system with limited rescues
+- Interactive terminal-based gameplay
 
--Resource extraction
+## Built with
 
--Inventory system
+`Java` · `Object-Oriented Programming`
 
--Ship fuel and propulsion management
+## Project structure
 
--xosuit energy management
-
--rading with planetary inhabitants
-
--Galactic exploration and travel
-
--Emergency system with limited rescues
-
--Interactive terminal-based gameplay
-
-Built with
-
-Java
-
-Project structure
-
+```text
 NoJavaSky.java       main game loop
 Jugador.java         player state and inventory
 Nave.java            ship and propulsion system
@@ -42,24 +35,31 @@ Radiactivo.java      radioactive planet
 CentroGalactico.java galactic center
 Tradeo.java          trading system
 GameUtils.java       terminal and game utilities
+```
 
-Running the game
+## Running the game
 
 Clone the repository:
 
+```bash
 git clone https://github.com/gabalero8/no-java-sky.git
 cd no-java-sky
+```
 
 Compile:
 
+```bash
 javac *.java
+```
 
 Run:
 
+```bash
 java NoJavaSky
+```
 
-Background
+## Background
 
-Originally developed as a university assignment for INF-253.
+Originally developed as a university assignment for **INF-253**.
 
 I kept the project because it became a much more complete game than the assignment name suggested :)
